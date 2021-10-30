@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Maths_Library
 {
@@ -84,6 +86,36 @@ namespace Maths_Library
         {
             Random rnd = new Random();
             return rnd.Next(min, max);
+        }
+
+        public static DayOfWeek CalculateDayOfWeek(DateTime startingDate, int daysToAdd)
+        {
+            /// <summary>
+            /// Adds the amount of days specified to a date of choice and returns the day of the week representation.
+            /// </summary>
+
+            return startingDate.AddDays(daysToAdd).DayOfWeek;
+        }
+
+        public static string ConvertToMD5(string inputString)
+        {
+            /// <summary>
+            /// Converts an input string in its MD5 hash equivalent.
+            /// </summary>
+
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(inputString);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
         }
     }
 }
