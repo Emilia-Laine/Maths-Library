@@ -54,6 +54,16 @@ namespace Maths_Library
             return Math.Pow((PI * x), 2);
         }
 
+        public static double CalculateAreaOfASquare(double length, double width)
+        {
+            return length * width;
+        }
+
+        public static double CalculateAreaOfATriangle(double baseLength, double height)
+        {
+            return (baseLength * height) / 2;
+        }
+
         public static bool IsEven(double x)
         {
             return (x % 2 == 0);
