@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using Math = System.Math;
 
 namespace Maths_Library
 {
@@ -36,11 +37,6 @@ namespace Maths_Library
         public static double SquareRoot(double x)
         {
             return Math.Sqrt(x);
-        }
-
-        public static double CubeRoot(double x)
-        {
-            return Math.Cbrt(x);
         }
 
         public static double Floor(double x)
@@ -103,7 +99,7 @@ namespace Maths_Library
         public static string ConvertToMD5(string inputString)
         {
             /// <summary>
-            /// Converts an input string in its MD5 hash equivalent.
+            /// Converts an input string in its MD5 hash equivalent and returns it.
             /// </summary>
 
             using (MD5 md5 = MD5.Create())
