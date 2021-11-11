@@ -18,7 +18,7 @@ namespace Maths_Library
         {
             return x - y;
         }
-        
+
         public static double Division(double x, double y)
         {
             return x / y;
@@ -80,21 +80,34 @@ namespace Maths_Library
             /// Returns the next values in a fibonnaci sequence for a specified length given a starting index.
             /// </summary>
 
-            double[] result = new double[length];
-            result[1] = result[0] + result[0];
-            
-            for (int i = 0; i < length; i++)
+            if (length < 1)
             {
-                if (i > 1)
-                    result[i] = (result[i - 2] + result[i - 1]);
+                throw new Exception("The length of the sequence must be atleast greater than one!");
             }
-            return result;
+            else
+            {
+                double[] result = new double[length];
+                result[1] = result[0] + result[0];
+
+                for (int i = 0; i < length; i++)
+                {
+                    if (i > 1)
+                        result[i] = (result[i - 2] + result[i - 1]);
+                }
+                return result;
+            }
         }
 
-        public static int GenerateRandom(int min, int max)
+        public static int GenerateRandomInt(int min, int max)
         {
             Random rnd = new Random();
             return rnd.Next(min, max);
+        }
+
+        public static double GenerateRandomDouble(double min, double max)
+        {
+            Random randomDouble = new Random();
+            return randomDouble.NextDouble() * (max - min) + min;
         }
 
         public static DayOfWeek CalculateDayOfWeek(DateTime startingDate, int daysToAdd)
