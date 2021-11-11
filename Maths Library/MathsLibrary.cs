@@ -75,9 +75,12 @@ namespace Maths_Library
             /// </summary>
 
             double[] result = new double[length];
+            result[1] = result[0] + result[0];
+            
             for (int i = 0; i < length; i++)
             {
-                result[i] = (result[i] - 1) + (result[i] - 2);
+                if (i > 1)
+                    result[i] = (result[i - 2] + result[i - 1]);
             }
             return result;
         }
@@ -105,7 +108,7 @@ namespace Maths_Library
 
             using (MD5 md5 = MD5.Create())
             {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(inputString);
+                byte[] inputBytes = Encoding.ASCII.GetBytes(inputString);
                 byte[] hashBytes = md5.ComputeHash(inputBytes);
 
                 StringBuilder sb = new StringBuilder();
