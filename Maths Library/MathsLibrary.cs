@@ -87,12 +87,13 @@ namespace Maths_Library
             else
             {
                 double[] result = new double[length];
+                result[0] = startingNumber;
                 result[1] = result[0] + result[0];
 
                 for (int i = 0; i < length; i++)
                 {
                     if (i > 1)
-                        result[i] = (result[i - 2] + result[i - 1]);
+                        result[i] = (result[i - 1] + result[i - 2]);
                 }
                 return result;
             }
